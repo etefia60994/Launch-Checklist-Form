@@ -2,7 +2,10 @@
 window.addEventListener("load", function() {
    let form = document.querySelector("form");
    form.addEventListener("submit", function(event) {
-      alert("submit clicked");
+      dataCheck(userData);
+      if (data = false){
+         preventDefault();
+         alert("Invalid Data");
    });
 });
 let userData = document.getElementsByName(text)
