@@ -4,8 +4,9 @@ window.addEventListener("load", function() {
    form.addEventListener("submit", function(event) {
       dataCheck(userData);
       if (data = false){
-         preventDefault();
+         // preventDefault();
          alert("Invalid Data");
+      }
    });
 });
 let userData = document.getElementsByName(text)
