@@ -1,8 +1,9 @@
 // Write your JavaScript code here!
 let userData = document.getElementsByName("formStuff")
 function dataCheck (userData){
-   data = null
-  (text !== "" ? data = true: data = false);
+  if(userData === ""){
+     alert("Invalid Data");
+  };
    return data;
 }
 window.addEventListener("load", function() {
