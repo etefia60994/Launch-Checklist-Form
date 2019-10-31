@@ -2,12 +2,12 @@
 let userData = document.getElementsByName("formStuff")
 function dataCheck (userData){
    data = null
-   return (text !== "" ? data = true: data = false);
-
+  (text !== "" ? data = true: data = false);
+   return data;
 }
 window.addEventListener("load", function() {
    let form = document.querySelector("form");
-   form.addEventListener("forSubmit", function(event) {
+   form.addEventListener("formSubmit", function(event) {
       dataCheck(userData);
       if (data = false){
          // preventDefault();
