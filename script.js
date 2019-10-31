@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
-let userData = document.get(text)
-function dataCheck (text){
+let userData = document.getElementsByName("formStuff")
+function dataCheck (userData){
    data = null
    return (text !== "" ? data = true: data = false);
 
