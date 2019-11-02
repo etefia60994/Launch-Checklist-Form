@@ -1,10 +1,11 @@
 // Write your JavaScript code here!
 console.log("Runnning?")
 let submitButton = document.getElementById("formSubmit");
-let userInput = document.getElementsByTagName("input");
+let pilotNameInput = document.querySelector("input[name=pilotName]");
 submitButton.addEventListener("click",function(){
-   if (userInput == ""){
-      alert("Invalid Data")
+   if (pilotNameInput.value === ""){
+      alert("Invalid Data");
+      event.preventDefault();
    }
 })
 
