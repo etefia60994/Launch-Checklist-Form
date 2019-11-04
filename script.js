@@ -11,7 +11,7 @@ let copilotStatus = document.getElementById("copilotStatus");
 let fuelStatus = document.getElementById("fuelStatus");
 let cargoStatus = document.getElementById("cargoStatus");
 let launchStatus = document.getElementById("launchStatus")
-// let launchStatusCheck = true;
+let launchStatusCheck = true;
 window.addEventListener("load", function () {
    let form = document.querySelector("form");
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
@@ -35,16 +35,19 @@ window.addEventListener("load", function () {
       });
    form.addEventListener("submit", function () {
       if (isNaN(fuelLevel.value) === true || isNaN(cargoMass.value) === true) {
+         launchStatusCheck = false
          alert("Invalid Data, Fuel Level and Cargo Mass Must Be Numbers");
          event.preventDefault();
          
       }
       if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass.value === "") {
+         launchStatusCheck = false
          alert("Invalid Data, Must Fill Out All Fields");
          event.preventDefault();
          
       }
       if (isNaN(pilotName.value) === false || isNaN(copilotName.value) === false) {
+         launchStatusCheck = false
          alert("Invalid Data, Pilot Names must not contain numbers");
          event.preventDefault();
       }
@@ -56,11 +59,12 @@ window.addEventListener("load", function () {
          launchStatus.innerHTML = "Shuttle is not ready for launch";
          document.getElementById('launchStatus').style.color = 'red';
          event.preventDefault();
-         
+         launchStatusCheck = false
 
       }
 
       if (cargoMass.value > 10000) {
+         launchStatusCheck = false
          faultyItems.style.visibility = "visible";
          pilotStatus = pilotStatus += pilotName
          copilotStatus = copilotStatus += copilotName
@@ -71,10 +75,14 @@ window.addEventListener("load", function () {
       }
 
       if (launchStatusCheck === true) {
-         launchStatus.innerHTML = "Shuttle is ready for launch"
-         pilotStatus = pilotStatus += pilotName
-         copilotStatus = copilotStatus += copilotName
-         // launchStatus.attr("id", "launchStatusValid");
+         faultyItems.style.visibility = "visible";
+         pilotStatus.innerHTML = ` Pilot ${pilotName.value} is ready`;
+         copilotStatus.innerHTML = `Co-Pilot ${copilotName.value} is ready`;
+         fuelStatus.innerHTML = "Fuel level high enough for launch";
+         launchStatus.innerHTML = "Shuttle is ready for launch";
+         document.getElementById('launchStatus').style.color = 'green';
+         cargoStatus.innerHTML = "Cargo mass low enough for launch";
+         event.preventDefault();
       }
       
    });
