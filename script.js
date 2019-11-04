@@ -34,6 +34,7 @@ window.addEventListener("load", function () {
          });
       });
    form.addEventListener("submit", function () {
+      launchStatusCheck = true
       if (isNaN(fuelLevel.value) === true || isNaN(cargoMass.value) === true) {
          launchStatusCheck = false
          alert("Invalid Data, Fuel Level and Cargo Mass Must Be Numbers");
